@@ -5,28 +5,28 @@ import {
   useRef,
   useState
 } from "react";
-import { birthdayConfig } from "./config";
+import { birthdayConfig, publicAsset } from "./config";
 
 const dateNoLabels = ["No", "Are you sure?", "Think again", "Nice try", "Still no?", "Last chance"];
 const confettiPieces = Array.from({ length: 36 }, (_, index) => index);
 const ambiencePieces = Array.from({ length: 20 }, (_, index) => index);
 const finaleSparkles = Array.from({ length: 10 }, (_, index) => index);
 const bouquetFlowers = [
-  { x: 50, height: 360, turn: -1, src: "/flowers/rose.webp" },
-  { x: 44, height: 345, turn: -6, src: "/flowers/peony.webp" },
-  { x: 56, height: 348, turn: 6, src: "/flowers/cosmos.webp" },
-  { x: 39, height: 324, turn: -10, src: "/flowers/tulip.webp" },
-  { x: 61, height: 328, turn: 10, src: "/flowers/ranunculus.webp" },
-  { x: 34, height: 304, turn: -13, src: "/flowers/rose.webp" },
-  { x: 66, height: 308, turn: 13, src: "/flowers/peony.webp" },
-  { x: 47, height: 318, turn: -3, src: "/flowers/cosmos.webp" },
-  { x: 53, height: 316, turn: 3, src: "/flowers/tulip.webp" },
-  { x: 31, height: 286, turn: -16, src: "/flowers/ranunculus.webp" },
-  { x: 69, height: 288, turn: 16, src: "/flowers/rose.webp" },
-  { x: 40, height: 295, turn: -8, src: "/flowers/peony.webp" },
-  { x: 60, height: 296, turn: 8, src: "/flowers/cosmos.webp" },
-  { x: 36, height: 275, turn: -12, src: "/flowers/tulip.webp" },
-  { x: 64, height: 276, turn: 12, src: "/flowers/ranunculus.webp" }
+  { x: 50, height: 360, turn: -1, src: publicAsset("/flowers/rose.webp") },
+  { x: 44, height: 345, turn: -6, src: publicAsset("/flowers/peony.webp") },
+  { x: 56, height: 348, turn: 6, src: publicAsset("/flowers/cosmos.webp") },
+  { x: 39, height: 324, turn: -10, src: publicAsset("/flowers/tulip.webp") },
+  { x: 61, height: 328, turn: 10, src: publicAsset("/flowers/ranunculus.webp") },
+  { x: 34, height: 304, turn: -13, src: publicAsset("/flowers/rose.webp") },
+  { x: 66, height: 308, turn: 13, src: publicAsset("/flowers/peony.webp") },
+  { x: 47, height: 318, turn: -3, src: publicAsset("/flowers/cosmos.webp") },
+  { x: 53, height: 316, turn: 3, src: publicAsset("/flowers/tulip.webp") },
+  { x: 31, height: 286, turn: -16, src: publicAsset("/flowers/ranunculus.webp") },
+  { x: 69, height: 288, turn: 16, src: publicAsset("/flowers/rose.webp") },
+  { x: 40, height: 295, turn: -8, src: publicAsset("/flowers/peony.webp") },
+  { x: 60, height: 296, turn: 8, src: publicAsset("/flowers/cosmos.webp") },
+  { x: 36, height: 275, turn: -12, src: publicAsset("/flowers/tulip.webp") },
+  { x: 64, height: 276, turn: 12, src: publicAsset("/flowers/ranunculus.webp") }
 ] as const;
 
 function useReducedMotion() {
