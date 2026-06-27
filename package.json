@@ -1,6 +1,5 @@
 {
   "name": "a-little-birthday-magic",
-  "homepage": "https://dipesh-03.github.io/HBD-Priya/",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,13 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "test": "vitest run",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "test": "vitest run"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "gh-pages": "^6.3.0",
     "react": "latest",
     "react-dom": "latest",
     "vite": "latest"
