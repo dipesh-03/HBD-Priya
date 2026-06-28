@@ -7,10 +7,13 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
+    "gh-pages": "^6.3.0",
     "react": "latest",
     "react-dom": "latest",
     "vite": "latest"
@@ -24,5 +27,6 @@
     "sharp": "^0.35.2",
     "typescript": "latest",
     "vitest": "latest"
-  }
+  },
+  "homepage": "https://dipesh-03.github.io/HBD-Priya/"
 }
