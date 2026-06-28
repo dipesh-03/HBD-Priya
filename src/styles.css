@@ -1528,10 +1528,53 @@ img {
 }
 
 .birthday-letter .letter-signature {
+  display: flex;
   margin: 1.45rem 0 0;
+  align-items: center;
+  gap: 0.55rem;
   color: var(--wine);
+  flex-wrap: wrap;
+  font-family: var(--serif);
   font-style: italic;
   line-height: 1.5;
+}
+
+.letter-signature span:first-child {
+  flex-basis: 100%;
+}
+
+.letter-signature strong {
+  color: var(--deep-wine);
+  font-weight: 400;
+}
+
+.letter-heart {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 16px;
+  background: #7a1028;
+  transform: rotate(-45deg);
+}
+
+.letter-heart::before,
+.letter-heart::after {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  content: "";
+  border-radius: 50%;
+  background: #7a1028;
+}
+
+.letter-heart::before {
+  top: -9px;
+  left: 0;
+}
+
+.letter-heart::after {
+  top: 0;
+  left: 9px;
 }
 
 .bouquet-finale-button {

@@ -61,7 +61,7 @@ describe("birthday experience", () => {
     expect(screen.queryByRole("button", { name: /see the birthday wish/i })).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /open the note/i }));
-    expect(screen.getByText(/there is something about us/i)).toBeInTheDocument();
+    expect(screen.getByText(/some things feel too honest/i)).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /see the birthday wish/i }));
     expect(screen.getByRole("heading", { name: /happy birthday/i })).toBeInTheDocument();
   });

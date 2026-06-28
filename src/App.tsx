@@ -31,7 +31,7 @@ const bouquetFlowers = [
 
 const birthdayLetterParagraphs = [
   "Happy Birthday.",
-  "I do not always say things perfectly, but I wanted you to know that the time I spend with you genuinely means a lot to me. Even the small moments stay with me more than I expect.",
+  "Some things feel too honest to keep only in my head, so I wanted to leave them here for you. The time I spend with you genuinely means a lot to me, and even the small moments stay with me more than I expect.",
   "There is something about us that feels easy, warm, and quietly special. The way we talk, laugh, and share little moments is something I truly value.",
   "I hope today makes you feel cared for, not just in a big birthday way, but in the small, honest ways too. I hope this year brings you peace on heavy days, laughter on ordinary days, and many more memories that we can smile about together.",
   "I am really grateful for you, and for us."
@@ -365,7 +365,7 @@ function Bouquet({ onFinale }: { onFinale: () => void }) {
                 {birthdayLetterParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
-                <p className="letter-signature">With warmth,<br />Dipesh</p>
+                <div className="letter-signature" aria-label="With warmth, Dipesh and Priya"><span>With warmth,</span><strong>Dipesh</strong><span className="letter-heart" aria-hidden="true" /><strong>Priya</strong></div>
               </article>
               <button className="seal-button bouquet-finale-button" type="button" onClick={onFinale}>
                 See the birthday wish
