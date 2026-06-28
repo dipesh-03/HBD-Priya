@@ -29,6 +29,14 @@ const bouquetFlowers = [
   { x: 64, height: 276, turn: 12, src: publicAsset("/flowers/ranunculus.webp") }
 ] as const;
 
+const birthdayLetterParagraphs = [
+  "Happy Birthday.",
+  "I do not always say things perfectly, but I wanted you to know that the time I spend with you genuinely means a lot to me. Even the small moments stay with me more than I expect.",
+  "There is something about us that feels easy, warm, and quietly special. The way we talk, laugh, and share little moments is something I truly value.",
+  "I hope today makes you feel cared for, not just in a big birthday way, but in the small, honest ways too. I hope this year brings you peace on heavy days, laughter on ordinary days, and many more memories that we can smile about together.",
+  "I am really grateful for you, and for us."
+] as const;
+
 function useReducedMotion() {
   const [reduced, setReduced] = useState(false);
 
@@ -290,6 +298,7 @@ function DateInvitation({ onAccept }: { onAccept: () => void }) {
 function Bouquet({ onFinale }: { onFinale: () => void }) {
   const [visibleCount, setVisibleCount] = useState(0);
   const [complete, setComplete] = useState(false);
+  const [noteOpen, setNoteOpen] = useState(false);
 
   useEffect(() => {
     const flowerTimers = bouquetFlowers.map((_, index) =>
@@ -310,7 +319,9 @@ function Bouquet({ onFinale }: { onFinale: () => void }) {
         <h2 id="bouquet-title">{complete ? `A bouquet for ${birthdayConfig.recipientName}.` : "Something beautiful is blooming..."}</h2>
         <p aria-live="polite">
           {complete
-            ? "Made one flower at a time, just for you."
+            ? noteOpen
+              ? "A note for just us, tucked inside the flowers."
+              : "There is one small note tucked into the ribbon."
             : "One stem, a few leaves, and then a flower. Watch it grow."}
         </p>
       </div>
@@ -336,13 +347,33 @@ function Bouquet({ onFinale }: { onFinale: () => void }) {
         <div className="bouquet-paper bouquet-paper-left" />
         <div className="bouquet-paper bouquet-paper-right" />
         <div className="bouquet-ribbon"><span /></div>
+        <div className="bouquet-note-peek">for you</div>
       </div>
 
       {complete && (
-        <button className="seal-button bouquet-finale-button" type="button" onClick={onFinale}>
-          See the birthday wish
-          <span aria-hidden="true">✦</span>
-        </button>
+        <div className="bouquet-actions">
+          {!noteOpen ? (
+            <button className="seal-button bouquet-note-button" type="button" onClick={() => setNoteOpen(true)}>
+              Open the note
+              <span aria-hidden="true">*</span>
+            </button>
+          ) : (
+            <div className="letter-wrap">
+              <article className="birthday-letter" aria-label="A birthday note for Priya">
+                <span className="eyebrow">a small note</span>
+                <h3>For you</h3>
+                {birthdayLetterParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+                <p className="letter-signature">With warmth,<br />Dipesh</p>
+              </article>
+              <button className="seal-button bouquet-finale-button" type="button" onClick={onFinale}>
+                See the birthday wish
+                <span aria-hidden="true">*</span>
+              </button>
+            </div>
+          )}
+        </div>
       )}
     </section>
   );

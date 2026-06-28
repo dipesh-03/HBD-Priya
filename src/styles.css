@@ -1414,11 +1414,128 @@ img {
   box-shadow: 0 5px 10px rgba(70, 25, 39, 0.2);
 }
 
-.bouquet-finale-button {
+.bouquet-note-peek {
+  position: absolute;
+  z-index: 32;
+  bottom: 112px;
+  left: 50%;
+  display: grid;
+  width: 84px;
+  height: 52px;
+  padding-top: 0.55rem;
+  place-items: start center;
+  color: rgba(112, 40, 63, 0.68);
+  border: 1px solid rgba(112, 40, 63, 0.13);
+  border-radius: 3px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.62), transparent 45%),
+    #fff8ed;
+  box-shadow: 0 12px 24px rgba(64, 25, 36, 0.14);
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  font-style: italic;
+  opacity: 0;
+  transform: translateX(-12%) translateY(28px) rotate(-8deg);
+}
+
+.bouquet-note-peek::after {
+  position: absolute;
+  right: 10px;
+  bottom: 9px;
+  left: 10px;
+  height: 1px;
+  content: "";
+  background: rgba(112, 40, 63, 0.12);
+  box-shadow: 0 8px 0 rgba(112, 40, 63, 0.09);
+}
+
+.bouquet-complete .bouquet-note-peek {
+  animation: note-peek-out 0.85s 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.bouquet-actions {
   position: relative;
   z-index: 4;
-  margin-top: 0;
+  display: grid;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  justify-items: center;
+  gap: 1.15rem;
+}
+
+.bouquet-note-button,
+.bouquet-finale-button {
   animation: reveal-up 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.letter-wrap {
+  display: grid;
+  width: min(690px, 100%);
+  justify-items: center;
+  gap: 1rem;
+  animation: reveal-up 0.78s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.birthday-letter {
+  position: relative;
+  width: 100%;
+  padding: clamp(30px, 5vw, 48px);
+  overflow: hidden;
+  border: 1px solid rgba(112, 40, 63, 0.13);
+  border-radius: 4px;
+  background:
+    linear-gradient(rgba(128, 80, 60, 0.028) 1px, transparent 1px) 0 0 / 100% 30px,
+    #fffaf0;
+  box-shadow: 0 28px 68px rgba(65, 25, 35, 0.16);
+  text-align: left;
+  transform: rotate(-0.35deg);
+}
+
+.birthday-letter::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 76px;
+  height: 76px;
+  content: "";
+  background:
+    linear-gradient(135deg, rgba(112, 40, 63, 0.1), rgba(255, 255, 255, 0.35) 48%, transparent 49%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.birthday-letter h3 {
+  margin: 0.55rem 0 1.15rem;
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.35rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.birthday-letter p {
+  margin: 0 0 1rem;
+  color: rgba(53, 28, 38, 0.76);
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.2vw, 1.14rem);
+  line-height: 1.72;
+}
+
+.birthday-letter p:first-of-type {
+  color: var(--wine);
+  font-size: clamp(1.08rem, 2.5vw, 1.28rem);
+  font-style: italic;
+}
+
+.birthday-letter .letter-signature {
+  margin: 1.45rem 0 0;
+  color: var(--wine);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.bouquet-finale-button {
+  margin-top: 0;
 }
 
 @keyframes realistic-stem-grow {
@@ -1466,6 +1583,11 @@ img {
   0%, 100% { transform: rotate(-0.45deg); }
   48% { transform: rotate(0.55deg); }
   72% { transform: rotate(0.15deg); }
+}
+
+@keyframes note-peek-out {
+  from { opacity: 0; transform: translateX(-12%) translateY(28px) rotate(-8deg); }
+  to { opacity: 1; transform: translateX(-12%) translateY(0) rotate(-8deg); }
 }
 
 /* Finale */
@@ -1879,6 +2001,14 @@ img {
     height: 34px;
   }
 
+  .bouquet-note-peek {
+    bottom: 98px;
+  }
+
+  .birthday-letter {
+    transform: none;
+  }
+
   .finale {
     padding-top: 130px;
     grid-template-columns: 1fr;
@@ -2057,8 +2187,25 @@ img {
     height: 17px;
   }
 
+  .bouquet-note-peek {
+    bottom: 88px;
+    width: 70px;
+    height: 44px;
+    font-size: 0.66rem;
+  }
+
+  .bouquet-note-button,
   .bouquet-finale-button {
     padding: 0.9rem 1.05rem;
+  }
+
+  .birthday-letter {
+    padding: 28px 22px;
+  }
+
+  .birthday-letter p {
+    font-size: 0.96rem;
+    line-height: 1.62;
   }
 
   .finale {

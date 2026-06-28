@@ -46,7 +46,7 @@ describe("birthday experience", () => {
     expect(screen.getByRole("button", { name: /yes, i would love to/i })).toHaveClass("centered");
   });
 
-  it("builds the bouquet for thirty seconds before enabling the finale", () => {
+  it("builds the bouquet, opens the note, and then enables the finale", () => {
     render(<App />);
     fireEvent.click(screen.getByRole("button", { name: /open your birthday gift/i }));
     act(() => vi.advanceTimersByTime(900));
@@ -57,6 +57,11 @@ describe("birthday experience", () => {
     act(() => vi.advanceTimersByTime(30000));
 
     expect(screen.getByRole("heading", { name: /a bouquet for priya/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /open the note/i })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /see the birthday wish/i })).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /open the note/i }));
+    expect(screen.getByText(/there is something about us/i)).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /see the birthday wish/i }));
     expect(screen.getByRole("heading", { name: /happy birthday/i })).toBeInTheDocument();
   });
