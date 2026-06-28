@@ -29,8 +29,10 @@ const bouquetFlowers = [
   { x: 64, height: 276, turn: 12, src: publicAsset("/flowers/ranunculus.webp") }
 ] as const;
 
+const BOUQUET_BUILD_MS = 15000;
+const FLOWER_STAGGER_MS = BOUQUET_BUILD_MS / bouquetFlowers.length;
+
 const birthdayLetterParagraphs = [
-  "Happy Birthday.",
   "Some things feel too honest to keep only in my head, so I wanted to leave them here for you. The time I spend with you genuinely means a lot to me, and even the small moments stay with me more than I expect.",
   "There is something about us that feels easy, warm, and quietly special. The way we talk, laugh, and share little moments is something I truly value.",
   "I hope today makes you feel cared for, not just in a big birthday way, but in the small, honest ways too. I hope this year brings you peace on heavy days, laughter on ordinary days, and many more memories that we can smile about together.",
@@ -302,9 +304,9 @@ function Bouquet({ onFinale }: { onFinale: () => void }) {
 
   useEffect(() => {
     const flowerTimers = bouquetFlowers.map((_, index) =>
-      window.setTimeout(() => setVisibleCount(index + 1), (index + 1) * 1900)
+      window.setTimeout(() => setVisibleCount(index + 1), (index + 1) * FLOWER_STAGGER_MS)
     );
-    const completeTimer = window.setTimeout(() => setComplete(true), 30000);
+    const completeTimer = window.setTimeout(() => setComplete(true), BOUQUET_BUILD_MS);
 
     return () => {
       flowerTimers.forEach((timer) => window.clearTimeout(timer));
@@ -361,11 +363,11 @@ function Bouquet({ onFinale }: { onFinale: () => void }) {
             <div className="letter-wrap">
               <article className="birthday-letter" aria-label="A birthday note for Priya">
                 <span className="eyebrow">a small note</span>
-                <h3>For you</h3>
+                <h3>Happy birthday</h3>
                 {birthdayLetterParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
-                <div className="letter-signature" aria-label="With warmth, Dipesh and Priya"><span>With warmth,</span><strong>Dipesh</strong><span className="letter-heart" aria-hidden="true" /><strong>Priya</strong></div>
+                <div className="letter-signature" aria-label="With warmth, Dipesh"><span>With warmth,</span><strong>Dipesh</strong><span className="letter-heart" aria-hidden="true" /></div>
               </article>
               <button className="seal-button bouquet-finale-button" type="button" onClick={onFinale}>
                 See the birthday wish

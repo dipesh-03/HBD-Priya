@@ -1521,11 +1521,6 @@ img {
   line-height: 1.72;
 }
 
-.birthday-letter p:first-of-type {
-  color: var(--wine);
-  font-size: clamp(1.08rem, 2.5vw, 1.28rem);
-  font-style: italic;
-}
 
 .birthday-letter .letter-signature {
   display: flex;
@@ -1551,8 +1546,8 @@ img {
 .letter-heart {
   position: relative;
   display: inline-block;
-  width: 18px;
-  height: 16px;
+  width: 11px;
+  height: 10px;
   background: #7a1028;
   transform: rotate(-45deg);
 }
@@ -1560,21 +1555,21 @@ img {
 .letter-heart::before,
 .letter-heart::after {
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 11px;
+  height: 11px;
   content: "";
   border-radius: 50%;
   background: #7a1028;
 }
 
 .letter-heart::before {
-  top: -9px;
+  top: -5.5px;
   left: 0;
 }
 
 .letter-heart::after {
   top: 0;
-  left: 9px;
+  left: 5.5px;
 }
 
 .bouquet-finale-button {

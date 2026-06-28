@@ -54,15 +54,16 @@ describe("birthday experience", () => {
 
     expect(screen.getByRole("heading", { name: /something beautiful is blooming/i })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /see the birthday wish/i })).not.toBeInTheDocument();
-    act(() => vi.advanceTimersByTime(30000));
+    act(() => vi.advanceTimersByTime(15000));
 
     expect(screen.getByRole("heading", { name: /a bouquet for priya/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /open the note/i })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /see the birthday wish/i })).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /open the note/i }));
+    expect(screen.getByRole("heading", { name: /^happy birthday$/i })).toBeInTheDocument();
     expect(screen.getByText(/some things feel too honest/i)).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: /see the birthday wish/i }));
-    expect(screen.getByRole("heading", { name: /happy birthday/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /happy birthday,\s*priya/i })).toBeInTheDocument();
   });
 });
