@@ -10,7 +10,8 @@
     "test": "vitest run",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "pages:down-all": "node scripts/disablePages.mjs"
+    "pages:down-all": "node scripts/disablePages.mjs",
+    "postdeploy": "node scripts/enablePages.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
